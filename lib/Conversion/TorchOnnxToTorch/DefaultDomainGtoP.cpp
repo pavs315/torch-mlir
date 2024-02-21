@@ -988,9 +988,8 @@ void mlir::torch::onnx_c::populateDefaultDomainGtoP(
                     return failure();
                   }
                   Value constFmod = rewriter.create<Torch::ConstantIntOp>(
-                                    binder.getLoc(), rewriter.getType<Torch::IntType>(),
-									rewriter.getIntegerAttr(rewriter.getIntegerType(64), fmod));
-                    
+                		    binder.getLoc(), rewriter.getType<Torch::IntType>(),
+                		    rewriter.getIntegerAttr(rewriter.getIntegerType(64), fmod));
                   rewriter.replaceOpWithNewOp<Torch::AtenFmodTensorOp>(
                       binder.op, resultType, lhs, rhs, constFmod);
                   return success();
